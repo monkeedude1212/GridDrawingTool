@@ -6,6 +6,12 @@ public class mapElement{
 		X = x;
 		Y = y;
 	}
+
+	public mapElement(int x, int y, Image image){
+		X = x;
+		Y = y;
+		img = image;
+	}	
 	// A map element is anything that has an X and Y location as defined by the
 	// mapCanvas. Many map elements will also have a rotation (and maybe a
 	// center of rotation), but that is not a requirement.
@@ -60,6 +66,9 @@ public class mapElement{
 		img = image;
 	}
 
+	public void paintElement(Graphics g){
+		g.drawImage(this.img, (int) X, (int) Y, null);
+	}
 	
 
 }
