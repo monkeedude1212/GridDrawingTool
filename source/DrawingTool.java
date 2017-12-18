@@ -1,25 +1,47 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class DrawingTool {
-	JFrame theFrame;
-	JPanel mainPanel; 	
-	mapElement me;
+	
 	public static void main (String[] args){
-		System.out.println("Map Painter Started");
+		SwingUtilities.invokeLater(
+			new Runnable(){
+				public void run(){
+					createAndShowGUI();
+				}
+			}				
+		);
+	}
+	
+	private static void createAndShowGUI(){
+		System.out.println("Created GUI on EDT? "+ SwingUtilities.isEventDispatchThread());
+		JFrame f = new JFrame("Grid Drawing Tool");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.add(new MapPanel());
+		f.pack();		
+		f.setVisible(true);
+		mapElement me = new mapElement(10, 10);
+	}
+}
 
-		new DrawingTool().startUp();
+class MapPanel extends JPanel{
+	public MapPanel(){
+		setBorder(BorderFactory.createLineBorder(Color.black));
+		addMouseListener(new MouseAdapter(){
+			public void mousePressed(MouseEvent e){
+				// do something
+			}
+		});
 
+		addMouseMotionListener(new MouseAdapter(){
+			public void mouseDragged(MouseEvent e){
+				// do another thing
+			}
+		});
 	}
 
-	public void startUp(){
-		theFrame = new JFrame("Drawing Tool");
-		mainPanel = new JPanel();
-		theFrame.add(mainPanel);
-		theFrame.setBounds(50,50,300,300);
-		theFrame.setVisible(true);
-		theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		me = new mapElement(10, 10);
+	public Dimension getPreferredSize(){
+		return new Dimension(250,200);
 	}
-
 }
