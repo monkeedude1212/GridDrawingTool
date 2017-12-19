@@ -66,8 +66,8 @@ public class mapElement{
 		img = image;
 	}
 
-	public void paintElement(Graphics g){
-		g.drawImage(this.img, (int) X, (int) Y, null);
+	public void paintElement(Graphics g, MapPanel mp){
+		g.drawImage(this.img, (int) X, (int) Y, mp);
 	}
 	
 
