@@ -18,12 +18,12 @@ public class DrawingTool {
 		System.out.println("Created GUI on EDT? "+ SwingUtilities.isEventDispatchThread());
 		JFrame f = new JFrame("Grid Drawing Tool");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		mapElement me = new mapElement(300, 300, new ImageIcon("missingImage.png").getImage());
-		
+		mapCanvas canvas = new mapCanvas();
+		canvas.add(new mapElement(10, 10));
+
 		mapCamera cam = new mapCamera();
-		MapPanel mp = new MapPanel(cam);
-		mp.setMapElements(me);
+		mapPanel mp = new mapPanel(cam);
+		mp.setMapCanvas(canvas);
 
 		f.add(mp);
 		
@@ -36,11 +36,11 @@ public class DrawingTool {
 	}
 }
 
-class MapPanel extends JPanel{
-	mapElement mapEl;
+class mapPanel extends JPanel{
+	mapCanvas canvas;
 	mapCamera cam;
 
-	public MapPanel(mapCamera camera){
+	public mapPanel(mapCamera camera){
 		setBorder(BorderFactory.createLineBorder(Color.black));
 
 		cam = camera;
@@ -48,6 +48,12 @@ class MapPanel extends JPanel{
 		addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
 				// do something
+				//cam.tranformPixelCoords(e.getX(), e.getY());
+
+			canvas.add(new mapElement(e.getX(), e.getY()));
+
+			repaint();
+
 			}
 		});
 
@@ -66,10 +72,12 @@ class MapPanel extends JPanel{
 		super.paintComponent(g);
 
 		// Draw map element
-		mapEl.paintElement(g, this);
+		for ( mapElement mapEl : canvas.getElements()){
+			mapEl.paintElement(g, this);
+		}
 	}
 
-	public void setMapElements(mapElement me){
-		mapEl = me;
+	public void setMapCanvas(mapCanvas can){
+		canvas = can;
 	}
 }
