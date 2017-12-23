@@ -8,4 +8,10 @@ public class mapCamera{
 	double Y;
 
 	double scale; // In pixels per tile
+
+	public mapCamera(){
+		X = 0;
+		Y = 0;
+		scale = 100;
+	}
 }

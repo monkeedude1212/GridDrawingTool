@@ -20,8 +20,11 @@ public class DrawingTool {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		mapElement me = new mapElement(300, 300, new ImageIcon("missingImage.png").getImage());
-		MapPanel mp = new MapPanel();
+		
+		mapCamera cam = new mapCamera();
+		MapPanel mp = new MapPanel(cam);
 		mp.setMapElements(me);
+
 		f.add(mp);
 		
 		f.pack();		
@@ -35,9 +38,13 @@ public class DrawingTool {
 
 class MapPanel extends JPanel{
 	mapElement mapEl;
+	mapCamera cam;
 
-	public MapPanel(){
+	public MapPanel(mapCamera camera){
 		setBorder(BorderFactory.createLineBorder(Color.black));
+
+		cam = camera;
+
 		addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
 				// do something
