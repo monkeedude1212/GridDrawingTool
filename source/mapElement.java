@@ -1,6 +1,12 @@
 import java.awt.*;
 import javax.swing.*;
 
+/*
+* A map element is anything that has an X and Y location as defined by the
+* mapCanvas. Many map elements will also have a rotation (and maybe a
+* center of rotation), but that is not a requirement.
+* 
+*/
 public class mapElement{
 	
 	// Maybe this should be an int? I'm not sure, the int could represent its
@@ -19,19 +25,27 @@ public class mapElement{
 	// flag is to determine which elements are to be rednered or not.
 	boolean isRenderable = true;
 	
-	public mapElement(double x, double y){
-		this.x = x;
-		this.y = y;
+	/** 
+    * Class constructor
+	* @param x the x coordinates
+	* @param y the y coordinates
+    */
+	public mapElement(int x, int y){
+		X = x;
+		Y = y;
 	}
 
-	public mapElement(double x, double y, Image image){
-		this.x = x;
-		this.y = y;
-		this.img = image;
+	/** 
+    * Class constructor with Image
+	* @param x the x coordinates
+	* @param y the y coordinates
+	* @param image the image for the element
+    */
+	public mapElement(int x, int y, Image image){
+		X = x;
+		Y = y;
+		img = image;
 	}	
-	// A map element is anything that has an X and Y location as defined by the
-	// mapCanvas. Many map elements will also have a rotation (and maybe a
-	// center of rotation), but that is not a requirement.
 
 	public double getX(){
 		return this.x;
