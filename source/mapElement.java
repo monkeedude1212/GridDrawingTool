@@ -79,8 +79,9 @@ public class mapElement{
 		this.img = image;
 	}
 
-	public void paintElement(Graphics g, MapPanel mp){
-		g.drawImage(this.img, (int) this.x, (int) this.y, mp);
-	}	
+
+	public void paintElement(Graphics g, mapPanel mp){
+		g.drawImage(this.img, (int) X, (int) Y, mp);
+	}
 
 }

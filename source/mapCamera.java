@@ -14,4 +14,8 @@ public class mapCamera{
 		Y = 0;
 		scale = 100;
 	}
+
+	public void tranformPixelCoords(int x, int y){
+		mapElement me = new mapElement(x, y, new ImageIcon("missingImage.png").getImage());
+	}
 }

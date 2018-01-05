@@ -7,14 +7,26 @@ public class mapCanvas{
 
 	// TODO: Make a camera and rendering system.
 
-	ArrayList<mapElement> mapElements;
-	public mapCanvas(int x, int y){
-		mapElements = new ArrayList<mapElement>();	
+	// The width and height are experessed in the number of 
+	// tiles, from zero. Zero height is the bottom of the map, 
+	// zero width is the left most edge of the map. 
+	double width;
+	double height;
 
-		for(int i = 0; i < x; i++){
-			for(int j = 0; j < y; j++){
-				mapElements.add( new mapElement(x, y));
-			}
-		}
+	ArrayList<mapElement> mapElements;
+
+	public mapCanvas(){
+		width = 10;
+		height = 10;
+		mapElements = new ArrayList<mapElement>();
 	} 
+
+	public void add(mapElement me){
+		mapElements.add(me);
+	}
+
+	public ArrayList<mapElement> getElements(){
+		return mapElements;
+	}
+
 }
