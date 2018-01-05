@@ -1,20 +1,34 @@
 import java.awt.*;
 import javax.swing.*;
 
+/*
+* A map element is anything that has an X and Y location as defined by the
+* mapCanvas. Many map elements will also have a rotation (and maybe a
+* center of rotation), but that is not a requirement.
+* 
+*/
 public class mapElement{
+	/** 
+    * Class constructor
+	* @param x the x coordinates
+	* @param y the y coordinates
+    */
 	public mapElement(int x, int y){
 		X = x;
 		Y = y;
 	}
 
+	/** 
+    * Class constructor with Image
+	* @param x the x coordinates
+	* @param y the y coordinates
+	* @param image the image for the element
+    */
 	public mapElement(int x, int y, Image image){
 		X = x;
 		Y = y;
 		img = image;
 	}	
-	// A map element is anything that has an X and Y location as defined by the
-	// mapCanvas. Many map elements will also have a rotation (and maybe a
-	// center of rotation), but that is not a requirement.
 
 	// Maybe this should be an int? I'm not sure, the int could represent its
 	// location in terms of grid coordinates, but a double easily lets you turn
